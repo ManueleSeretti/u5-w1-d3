@@ -39,4 +39,11 @@ public class OrdineTest {
         double result = ordineTest.getConto();
         assertEquals(31.119999999999997, result);
     }
+
+    @Test
+    public void sizeList() {
+        List<ElementiMenu> l = ordineTest.getLista();
+        assertEquals(8, l.size());
+
+    }
 }
