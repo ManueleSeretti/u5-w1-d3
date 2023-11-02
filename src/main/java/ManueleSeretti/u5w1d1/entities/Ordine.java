@@ -40,6 +40,11 @@ public class Ordine {
 
     public void conto() {
         this.lista.forEach(e -> this.conto = this.conto + e.getPrezzo());
-        this.conto = this.conto + (coperti * (prezzo_coperto));
+        this.conto = this.conto + contoCoperti();
+    }
+
+
+    public double contoCoperti() {
+        return coperti * prezzo_coperto;
     }
 }
