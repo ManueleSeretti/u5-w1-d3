@@ -5,6 +5,8 @@ import ManueleSeretti.u5w1d1.entities.Ordine;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;
@@ -45,5 +47,14 @@ public class OrdineTest {
         List<ElementiMenu> l = ordineTest.getLista();
         assertEquals(8, l.size());
 
+    }
+
+
+    @ParameterizedTest
+    @CsvSource({"Pizze,4", "Drinks,4"})
+    public void countPizze(String nomeClasse, int result) {
+        List<ElementiMenu> l = ordineTest.getLista();
+        List<ElementiMenu> lista = l.stream().filter(e -> e.getClass().getSimpleName().equals(nomeClasse)).toList();
+        assertEquals(result, lista.size());
     }
 }
